@@ -2,20 +2,16 @@
 
 
 IncConduct::IncConduct(){
-	duty[NOW] = 0.1; //default value
+    set_duty(0.1);
+    
+    
 }
 
 void IncConduct::evaluate()
 {
 	
-	update_readings();
-	
-	V[NOW] = this->voltage[NOW];
-	I[NOW] = this->current[NOW];
-	
-	deltaV = V[NOW] - V[PREVIOUS];
-	deltaI = I[NOW] - I[PREVIOUS];
-	
+	update_readings(); //reads V and I, calcs delta V, I and P
+		
 	if(delta_v == 0)
 	{
 		if(delta_c == 0)
@@ -23,27 +19,28 @@ void IncConduct::evaluate()
 			//return
 		}else if(delta_c>0)
 		{
-				next_duty = duty[NOW] + DUTY_STEP[UP];
+				next_duty = duty[NOW] - ABS_DUTY_STEP; //increase vref
 		}else{ //less than
-			next_duty = duty[NOW] - DUTY_STEP[DOWN];
+			next_duty = duty[NOW] + ABS_DUTY_STEP; //decrease vref
 		}
 	}else 
 	{
-		if((delta_c/delta_v) == -(I[NOW]/V[NOW]))
+		if((delta_c/delta_v) == -(current[NOW]/voltage[NOW]))
 		{
 			//return
-		}else if((deltaI/deltaV) > -(I[NOW]/V[NOW]))
+		}else if((delta_c/delta_v) > -(current[NOW]/voltage[NOW]))
 		{
-			next_duty = duty[NOW] + DUTY_STEP[UP];
+			next_duty = duty[NOW] - ABS_DUTY_STEP;
 		}else //less than
 		{
-			next_duty = duty[NOW] - DUTY_STEP[DOWN];
+			next_duty = duty[NOW] + ABS_DUTY_STEP;
 		}
 	}
 		
 	duty[PREVIOUS] = duty[NOW];
 	duty[NOW] = next_duty;
 	set_duty(next_duty);
-	V[PREVIOUS] = V[NOW];
-	I[PREVIOUS] = I[NOW];
+	voltage[PREVIOUS] = voltage[NOW];
+	current[PREVIOUS] = current[NOW];
+    power[PREVIOUS] = power[NOW];
 }

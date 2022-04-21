@@ -49,6 +49,7 @@ class PowerTracking{
 		volatile float MAX_DUTY;
 		volatile float MIN_DUTY;
 		volatile float DUTY_STEP[2];
+        volatile float ABS_DUTY_STEP = 0.01f;
 		volatile float MAX_POWER;
 		volatile float MAX_POWER_DUTY;
 		volatile float threshold;

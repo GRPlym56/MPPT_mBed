@@ -27,7 +27,9 @@ void PeturbObserb::evaluate(){
 
     next_duty = (next_duty>MAX_DUTY)?MAX_DUTY:next_duty;
     next_duty = (next_duty<MIN_DUTY)?MIN_DUTY:next_duty;
-
+    voltage[PREVIOUS] = voltage[NOW];
+	current[PREVIOUS] = current[NOW];
+    power[PREVIOUS] = power[NOW];
 	duty[PREVIOUS] = duty[NOW];
 	set_duty(next_duty);
 }

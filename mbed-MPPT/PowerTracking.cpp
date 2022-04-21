@@ -3,7 +3,7 @@
 #include <iterator>
 PowerTracking::PowerTracking():CurrentSense(PA_4), VoltageSense(PA_0), PWM(PB_0){
 	this->MAX_DUTY = 0.9f;
-	this->MIN_DUTY = 0.1f;
+	this->MIN_DUTY = 0.05f;
 
 	this->DUTY_STEP[UP] = 0.01f;
 	this->DUTY_STEP[DOWN] = 0.01f;
@@ -78,9 +78,12 @@ void PowerTracking::update_readings(){
     delta_c = current[NOW] - current[PREVIOUS];
     delta_p = power[NOW] - power[PREVIOUS];
 
+    /*
+    //this is a silly and danger
     voltage[PREVIOUS] = voltage[NOW];
     current[PREVIOUS] = current[NOW];
     power[PREVIOUS] = power[NOW];
+    */
 
     Duty_Percent = 100*get_duty(NOW);
 

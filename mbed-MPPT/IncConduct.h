@@ -9,13 +9,9 @@ class IncConduct : public PowerTracking{
 			IncConduct();
 			//IncConduct();
 			void evaluate() override;
-
-		private:
+		
 			
-		volatile float V[2];
-		volatile float I[2];
-		volatile float deltaV;
-		volatile float deltaI;
+	
 };
 
 
