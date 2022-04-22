@@ -11,7 +11,7 @@ PeturbObserb::PeturbObserb(){
 void PeturbObserb::evaluate(){
 	update_readings();
 	if (delta_p >= 0.0f){								//if power has increased
-		next_duty = duty[NOW] + DUTY_STEP[UP];			//increase duty
+			
         if(delta_v >= 0.0f ){                           //if Voltage and power have increased
             next_duty = duty[NOW] - DUTY_STEP[DOWN];    //decrease duty (something ... load resistance)
         }else{                                          //if power has increased but voltage has decreased

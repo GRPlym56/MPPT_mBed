@@ -23,7 +23,7 @@ PowerTracking::PowerTracking():CurrentSense(PA_4), VoltageSense(PA_0), PWM(PB_0)
     this->IScaler = 1.0f;
 
     this->OS_Rate = 1;
-}
+}                                                                         
 
 void PowerTracking::sweep_duty(){
 	float step = 0.01f;

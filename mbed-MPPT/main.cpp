@@ -3,12 +3,12 @@
 #include "PeturbObserb.h"
 #include "IncConduct.h"
 
-//PeturbObserb PO;
-IncConduct INC;
+PeturbObserb PO;
+//IncConduct INC;
 // main() runs in its own thread in the OS
 int main()
 {
-    /*
+    
     PO.set_V_scalling(22.0);
     PO.set_I_scalling(2.0);
     PO.set_PWM_Frequency(10000); //10KHz PWM Frequency
@@ -20,8 +20,8 @@ int main()
         PO.evaluate();
         wait_us(100000); //wait 100ms
     }
-    */
     
+    /*
     INC.set_V_scalling(22.0);
     INC.set_I_scalling(2.0);
     INC.set_PWM_Frequency(10000);
@@ -33,7 +33,7 @@ int main()
         INC.evaluate();
         wait_us(100000);
     }
-    
+    */
 
 }
 
